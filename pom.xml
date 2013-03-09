@@ -8,11 +8,11 @@
         <version>7</version>
     </parent>
 
-    <groupId>me.shakiba.opengraph</groupId>
-    <artifactId>opengraph</artifactId>
+    <groupId>me.shakiba.og4j</groupId>
+    <artifactId>og4j</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>OpenGraph for Java</name>
+    <name>OG4J</name>
     <description>OpenGraph for Java</description>
     <url>http://github.com/shakiba/og4j</url>
 
