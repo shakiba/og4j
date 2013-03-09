@@ -18,10 +18,10 @@ public class OpenGraphValue {
     }
 
     public OpenGraphValue(String name, String value) {
-        add(name, value);
+        put(name, value);
     }
 
-    public boolean add(String name, String value) {
+    public boolean put(String name, String value) {
         if (value == null) {
             return false;
         }
@@ -30,14 +30,8 @@ public class OpenGraphValue {
             return true;
         }
 
-        if (values == null) {
-            synchronized (this) {
-                if (values == null) {
-                    values = ArrayListMultimap.create();
-                }
-            }
-        }
-
+        values();
+        
         String[] names = name.split("\\:", 2);
 
         if (names.length == 1) {
@@ -49,42 +43,49 @@ public class OpenGraphValue {
         if (!is(values)) {
             this.values.put(names[0], new OpenGraphValue(names[1], value));
         } else {
-            get(values, -1, null).add(names[1], value);
+            get(values, -1, null).put(names[1], value);
         }
         return true;
     }
 
-    public String str() {
+    private synchronized ArrayListMultimap<String, OpenGraphValue> values() {
+        if (values == null) {
+            values = ArrayListMultimap.create();
+        }
+        return values;
+    }
+
+    public String string() {
         return Strings.nullToEmpty(this.value);
     }
 
-    public String str(String name, int... i) {
-        return get(name, i).str();
+    public String string(String name, int... i) {
+        return get(name, i).string();
     }
 
-    private OpenGraphValue get(String name, int... i0) {
-        if (name.contains(":")) {
-            String[] names = name.split("\\:");
-            int[] i;
-            if (i0.length < names.length) {
-                i = new int[names.length];
-                System.arraycopy(i0, 0, i, 0, i0.length);
-            } else {
-                i = i0;
-            }
-            OpenGraphValue next = this;
-            for (int j = 0; j < names.length; j++) {
-                String nextName = names[j];
-                next = next.get(nextName, i[j]);
-            }
-            return next;
-        } else {
-            return get(name, i0[0]);
+    public OpenGraphValue get(String name, int... index) {
+        String[] names = name.split("\\:");
+
+        OpenGraphValue value = this;
+
+        for (int i = 0; i < names.length && i < index.length; i++) {
+            String nextName = names[i];
+            value = value.get(nextName, index[i]);
         }
+        for (int i = index.length; i < names.length; i++) {
+            String nextName = names[i];
+            value = value.get(nextName, 0);
+        }
+
+        return value;
     }
 
-    private OpenGraphValue get(String name, int i) {
+    public OpenGraphValue get(String name, int i) {
         return values == null ? INVALID : get(values.get(name), i, INVALID);
+    }
+
+    public boolean isValid() {
+        return true;
     }
 
     @Override
@@ -98,10 +99,6 @@ public class OpenGraphValue {
         return "'" + value + "', " + values;
     }
 
-    public boolean isValid() {
-        return true;
-    }
-
     public static final OpenGraphValue INVALID = new OpenGraphValue() {
         @Override
         public boolean isValid() {
@@ -109,15 +106,15 @@ public class OpenGraphValue {
         }
     };
 
-    public static <E> E get(List<E> list, int i, E noValue) {
+    private static <E> E get(List<E> list, int i, E noValue) {
         int size = list.size();
         if (i < -size || size <= i) {
             return noValue;
         }
-        return list.get(i < 0 ? list.size() - i : i);
+        return list.get(i < 0 ? list.size() + i : i);
     }
 
-    public static boolean is(List<?> list) {
+    private static boolean is(List<?> list) {
         return list != null && !list.isEmpty();
     }
 

@@ -1,6 +1,30 @@
 package me.shakiba.og4j;
 
 public class OpenGraph extends OpenGraphValue {
+    public static final String og_url = "og:url";
+    public static final String og_title = "og:title";
+    public static final String og_type = "og:type";
+    public static final String og_image = "og:image";
+    public static final String og_audio = "og:audio";
+    public static final String og_description = "og:description";
+    public static final String og_determiner = "og:determiner";
+    public static final String og_locale = "og:locale";
+    public static final String og_locale_alternate = "og:locale:alternate";
+    public static final String og_site_name = "og:site_name";
+    public static final String og_video = "og:video";
+    public static final String og_image_url = "og:image:url";
+    public static final String og_image_secure_url = "og:image:secure_url";
+    public static final String og_image_type = "og:image:type";
+    public static final String og_image_width = "og:image:width";
+    public static final String og_image_height = "og:image:height";
+    public static final String og_video_url = "og:video:url";
+    public static final String og_video_secure_url = "og:video:secure_url";
+    public static final String og_video_type = "og:video:type";
+    public static final String og_video_width = "og:video:width";
+    public static final String og_video_height = "og:video:height";
+    public static final String og_audio_url = "og:audio:url";
+    public static final String og_audio_secure_url = "og:audio:secure_url";
+    public static final String og_audio_type = "og:audio:type";
 
     /**
      * og:url - The canonical URL of your object that will be used as its
@@ -8,7 +32,7 @@ public class OpenGraph extends OpenGraphValue {
      * (Basic)
      */
     public String url() {
-        return str("og:url");
+        return string(og_url);
     }
 
     /**
@@ -16,7 +40,7 @@ public class OpenGraph extends OpenGraphValue {
      * e.g., "The Rock". (Basic)
      */
     public String title() {
-        return str("og:title");
+        return string(og_title);
     }
 
     /**
@@ -24,7 +48,7 @@ public class OpenGraph extends OpenGraphValue {
      * type you specify, other properties may also be required. (Basic)
      */
     public String type() {
-        return str("og:type");
+        return string(og_type);
     }
 
     /**
@@ -32,14 +56,14 @@ public class OpenGraph extends OpenGraphValue {
      * graph. (Basic)
      */
     public String image() {
-        return str("og:image");
+        return string(og_image);
     }
 
     /**
      * og:audio - A URL to an audio file to accompany this object. (Optional)
      */
     public String audio() {
-        return str("og:audio");
+        return string(og_audio);
     }
 
     /**
@@ -47,7 +71,7 @@ public class OpenGraph extends OpenGraphValue {
      * (Optional)
      */
     public String description() {
-        return str("og:description");
+        return string(og_description);
     }
 
     /**
@@ -57,7 +81,7 @@ public class OpenGraph extends OpenGraphValue {
      * (blank). (Optional)
      */
     public String determiner() {
-        return str("og:determiner");
+        return string(og_determiner);
     }
 
     /**
@@ -65,7 +89,7 @@ public class OpenGraph extends OpenGraphValue {
      * language_TERRITORY. Default is en_US. (Optional)
      */
     public String locale() {
-        return str("og:locale");
+        return string(og_locale);
     }
 
     /**
@@ -73,115 +97,115 @@ public class OpenGraph extends OpenGraphValue {
      * in. (Optional)
      */
     public String localeAlternate() {
-        return str("og:locale:alternate");
+        return string(og_locale_alternate);
     }
 
     /**
      * og:site_name - If your object is part of a larger web site, the name
      * which should be displayed for the overall site. e.g., "IMDb". (Optional)
      */
-    public String site_name() {
-        return str("og:site_name");
+    public String siteName() {
+        return string(og_site_name);
     }
 
     /**
      * og:video - A URL to a video file that complements this object. (Optional)
      */
     public String video() {
-        return str("og:video");
+        return string(og_video);
     }
 
     /**
      * og:image:url - Identical to og:image. (Structured)
      */
     public String imageUrl() {
-        return str("og:image:url");
+        return string(og_image_url);
     }
 
     /**
      * og:image:secure_url - An alternate url to use if the webpage requires
      * HTTPS. (Structured)
      */
-    public String imageSecure_url() {
-        return str("og:image:secure_url");
+    public String imageSecureUrl() {
+        return string(og_image_secure_url);
     }
 
     /**
      * og:image:type - A MIME type for this image. (Structured)
      */
     public String imageType() {
-        return str("og:image:type");
+        return string(og_image_type);
     }
 
     /**
      * og:image:width - The number of pixels wide. (Structured)
      */
     public String imageWidth() {
-        return str("og:image:width");
+        return string(og_image_width);
     }
 
     /**
      * og:image:height - The number of pixels high. (Structured)
      */
     public String imageHeight() {
-        return str("og:");
+        return string(og_image_height);
     }
 
     /**
      * og:image:url - Identical to og:image. (Structured)
      */
     public String videoUrl() {
-        return str("og:video:url");
+        return string(og_video_url);
     }
 
     /**
      * og:video:secure_url - An alternate url to use if the webpage requires
      * HTTPS. (Structured)
      */
-    public String videoSecure_url() {
-        return str("og:video:secure_url");
+    public String videoSecureUrl() {
+        return string(og_video_secure_url);
     }
 
     /**
      * og:video:type - A MIME type for this video. (Structured)
      */
     public String videoType() {
-        return str("og:video:type");
+        return string(og_video_type);
     }
 
     /**
      * og:video:width - The number of pixels wide. (Structured)
      */
     public String videoWidth() {
-        return str("og:video:width");
+        return string(og_video_width);
     }
 
     /**
      * og:video:height - The number of pixels high. (Structured)
      */
     public String videoHeight() {
-        return str("og:video:height");
+        return string(og_video_height);
     }
 
     /**
      * og:audio:url - Identical to og:image. (Structured)
      */
     public String audioUrl() {
-        return str("og:audio:url");
+        return string(og_audio_url);
     }
 
     /**
      * og:audio:secure_url - An alternate url to use if the webpage requires
      * HTTPS. (Structured)
      */
-    public String audioSecure_url() {
-        return str("og:audio:secure_url");
+    public String audioSecureUrl() {
+        return string(og_audio_secure_url);
     }
 
     /**
      * og:audio:type - A MIME type for this audio. (Structured)
      */
     public String audioType() {
-        return str("og:audio:type");
+        return string(og_audio_type);
     }
 }
