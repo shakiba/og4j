@@ -1,4 +1,4 @@
-package me.shakiba.opengraph;
+package me.shakiba.og4j;
 
 import java.util.List;
 

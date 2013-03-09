@@ -1,7 +1,9 @@
-package me.shakiba.opengraph;
+package me.shakiba.og4j;
 
 import java.util.AbstractMap.SimpleEntry;
 import java.util.List;
+
+import me.shakiba.og4j.OpenGraph;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

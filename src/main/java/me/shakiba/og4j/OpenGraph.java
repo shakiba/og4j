@@ -1,4 +1,4 @@
-package me.shakiba.opengraph;
+package me.shakiba.og4j;
 
 public class OpenGraph extends OpenGraphValue {
 
