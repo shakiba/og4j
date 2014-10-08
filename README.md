@@ -2,7 +2,7 @@
 
 #### Usage
 
-This package doesn't include neither HTTP client nor HTML parser, so you can use it with whatever you prefer.
+This package includes neither HTTP client nor HTML parser, so you can use it with whatever you prefer.
 
 Please see [test class](src/test/java/me/shakiba/og4j/OpenGraphTest.java) for usage example with [jsoup](jsoup.org).
 
